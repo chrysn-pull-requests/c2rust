@@ -618,6 +618,19 @@ impl<'c> Translation<'c> {
                 ))
             }
 
+            "__builtin_arm_get_fpscr" => Ok(WithStmts::new_val(mk().path_expr(vec![
+                "",
+                "llvmint",
+                "arm",
+                "get_fpscr",
+            ]))),
+            "__builtin_arm_set_fpscr" => Ok(WithStmts::new_val(mk().path_expr(vec![
+                "",
+                "llvmint",
+                "arm",
+                "set_fpscr",
+            ]))),
+
             _ => Err(format_translation_err!(self.ast_context.display_loc(src_loc), "Unimplemented builtin {}", builtin_name)),
         }
     }
